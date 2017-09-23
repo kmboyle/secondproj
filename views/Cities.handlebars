@@ -1,0 +1,90 @@
+
+<body  style="color: white">
+    <div class = "container">
+    <div class ="row">
+        <div class = "col-md-6">
+
+<h1 id="location"><strong>Destination: {{city}}</strong></h1>
+    <div id="question" class="city-{{city}}">
+       <h1>You have arrived in {{city}}!</h1>
+       <h3>Here is your question:</h3>
+       <hr style="background-color: white">
+
+      <h3>    
+          
+          {{question}}
+         
+          </h3>
+       <form id="compareForm">
+            <div id="userAnswer">
+                <input id="true" type="radio" name="userGuess" value="True">True<br>
+                <input id="false" type="radio" name="userGuess" value="False">False<br>
+                <button id = "checkAnswer" type="submit">Submit</button>
+            </div>
+        </form>
+
+        <div class = "displayResult"></div>
+         {{!-- css styles hide answer, show answer and toggle class names on the divs --}}
+
+        </div>
+        </div>
+
+        <div class = "col-md-6">
+            <img src = "/assets/images/{{city}}.jpg" style="width: 650px; height: 600px"/>
+        </div>
+        </div>
+<script>
+
+    var cityName = "{{city}}"
+    var questionId = "{{uuid}}"
+
+    $(document).ready(function(){
+
+              function displayResult(result){
+                console.log(result);
+                if($(".displayResult").css("display") === "none"){
+                    $(".displayResult").css("display","block");
+                } else {
+                    $(".displayResult").css("display","none");
+                }
+
+                if(result === "{{correct_answer}}"){
+                    $(".displayResult").html("Correct! Go find another!");
+                } else {
+                    $(".displayResult").html("Sorry, wrong! Go find another!");
+                }
+            }
+
+        $("#checkAnswer").on("click", function(event){
+var userGuess;
+            event.preventDefault();
+                 if ($("#true").prop("checked")) {
+                        userGuess = "True";
+                    } else {
+                        userGuess = "False";
+                    }
+           console.log( userGuess);
+           displayResult(userGuess);
+   /*
+
+             {{!-- $.get({
+                url: "/api/checkAnswer",
+                data: {
+                    questionId: questionId,
+                    cityName: cityName,
+                    answer: userGuess
+                }
+            }).then(function(result){
+               // if result is you got it right
+               //display to user correct! --}}
+        }) --}} */
+    });
+
+    });
+
+
+</script>
+
+</body>
+ 
+

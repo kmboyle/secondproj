@@ -1,0 +1,24 @@
+{
+    "development": {
+        "username": "root",
+        "password": "438278kmb",
+        "database": "mission",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "gbwu2d5505opiymq",
+        "password": "aqpcwf8ano6c2auu",
+        "database": "xolzx11tkv2is5ii",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "use_env_variable": "JAWSDB_URL"
+    }
+}
