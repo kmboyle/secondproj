@@ -1,88 +1,176 @@
 
-<body  style="color: white">
-    <div class = "container">
+<body  style="color: #262626">
+ <div class = "container">
+     <div class ="row">
+        <div class = "col-md-12 text-center">
+            <h1 id="location"><strong>Destination: {{city}}</strong></h1>
+        </div>
+    </div>  
+     
     <div class ="row">
-        <div class = "col-md-6">
+        <div class = "col-md-6 text-center panel">
 
-<h1 id="location"><strong>Destination: {{city}}</strong></h1>
-    <div id="question" class="city-{{city}}">
-       <h1>You have arrived in {{city}}!</h1>
-       <h3>Here is your question:</h3>
-       <hr style="background-color: white">
+            
+            <div id="question" class="city-{{city}}">
+            <h1>You have arrived in {{city}}!</h1>
+            <h3>Here is your question:</h3>
+            <hr style="background-color: #262626">
 
-      <h3>    
-          
-          {{question}}
-         
-          </h3>
-       <form id="compareForm">
-            <div id="userAnswer">
-                <input id="true" type="radio" name="userGuess" value="True">True<br>
-                <input id="false" type="radio" name="userGuess" value="False">False<br>
-                <button id = "checkAnswer" type="submit">Submit</button>
+            <h3>           
+                {{question}}        
+            </h3>   
+                    <div id="userAnswer">
+                        <div class = "userGuessT"><h3>True</h3></div>
+                        <div class = "userGuessF"><h3>False</h3></div>
+                    </div>
+
+                <div class = "displayResult"><h3></h3></div>
+               
             </div>
-        </form>
+            <div class="fly">
+                  <h3>Take off to your next destination!</h3>
+            <img id = "plane"  src = "/assets/images/fly.jpg" style="width:328px; height: 153px" onclick="fly()"/>
+            </div>
 
-        <div class = "displayResult"></div>
-         {{!-- css styles hide answer, show answer and toggle class names on the divs --}}
-
+        <div><h3>Have you ever visited {{city}} before?</h3><br>
+        <div class="visited"><h3>Yes</h3></div>
+        <div class="mightVisit"><h3>No</h3></div>
         </div>
+        <div class = "advice"><h3></h3></div>          
         </div>
-
         <div class = "col-md-6">
+            <div class = "img img-responsive center-block">
+            <a href="http://www.wikipedia.com/wiki/{{city}}" target="_blank">
             <img src = "/assets/images/{{city}}.jpg" style="width: 650px; height: 600px"/>
+            </a>
+            </div>  
         </div>
-        </div>
+ </div>
 <script>
 
-    var cityName = "{{city}}"
-    var questionId = "{{uuid}}"
+    //script to trigger flight animation
+    function fly(){
+    document.getElementById('plane').className ='flight';
+  }
+  //script to hide element after animation
+  var plane = document.getElementById("plane");
+ plane.addEventListener('webkitAnimationEnd',function( event ) {plane.style.display = 'none'; }, false);
+
+    var cityName = "{{city}}";
+    var uuid = "{{uuid}}";
+    var userScore;
+    var userGuess;
+    var totalVisit = {{visited}};
 
     $(document).ready(function(){
+    //attempt to close user session      
+    //var myWindow = window.open("localhost:8080/questions/{{uuid}}");
+    function closeWin() {
+    myWindow.close();
+    }
 
-              function displayResult(result){
-                console.log(result);
+    //check user guess against db answer
+              function displayResult(userGuess){
+               
                 if($(".displayResult").css("display") === "none"){
                     $(".displayResult").css("display","block");
                 } else {
                     $(".displayResult").css("display","none");
                 }
 
-                if(result === "{{correct_answer}}"){
-                    $(".displayResult").html("Correct! Go find another!");
+                if(userGuess === "{{correct_answer}}"){
+                    $(".displayResult h3").html("Correct! Go find another City!");
+                    userScore = 3;
+                    console.log($(".displayResult h3").val());
+                    if($(".displayResult h3").val() && $(".advice h3").val()){
+                        update();
+                    }
+
+                
                 } else {
-                    $(".displayResult").html("Sorry, wrong! Go find another!");
+                    $(".displayResult h3").html("Sorry, wrong! Go find another City!");
+                    userScore = 0;
+                     if($(".displayResult h3").val() && $(".advice h3").val()){
+                        update();
+                    }
                 }
             }
 
-        $("#checkAnswer").on("click", function(event){
-var userGuess;
-            event.preventDefault();
-                 if ($("#true").prop("checked")) {
-                        userGuess = "True";
-                    } else {
-                        userGuess = "False";
-                    }
-           console.log( userGuess);
-           displayResult(userGuess);
-   /*
+            $(".userGuessT").on("click", function(event){
 
-             {{!-- $.get({
-                url: "/api/checkAnswer",
-                data: {
-                    questionId: questionId,
-                    cityName: cityName,
-                    answer: userGuess
-                }
-            }).then(function(result){
+                event.preventDefault();
+                        userGuess = "True";
+                        $(".userGuessT").hide();
+                        $(".userGuessF").hide();
+                        displayResult(userGuess);
+
+
+                });
+            $(".userGuessF").on("click", function(event){
+                        event.preventDefault();
+                        userGuess = "False";
+                        $(".userGuessF").hide();
+                        $(".userGuessT").hide();
+                        displayResult(userGuess);
+                 });
+
+//checks visit reply and counts how many people have visited this city
+  $(".visited").on("click", function(event){
+
+            event.preventDefault();
+            totalVisit += 1;
+            $(".visited").hide();
+            $(".mightVisit").hide();
+            $(".advice h3").html("You earn a visit badge!");
+            updateVisit();
+           });
+           
+$(".mightVisit").on("click", function(event){
+            event.preventDefault();
+            totalVisit += 0; 
+            $(".visited").hide();
+            $(".mightVisit").hide();
+            $(".advice h3").html("Consider making this your next destination!");
+            updateVisit();
+});
+
+//function to send count to database
+function updateVisit (){
+$.ajax({
+     url: "/api/updateVisit",
+     type: "PUT",
+    data: {
+        uuid: uuid,
+        cityName: cityName,
+        visit:  totalVisit
+        }
+    }).then(function(result){
+        console.log(result);
                // if result is you got it right
                //display to user correct! --}}
-        }) --}} */
-    });
+        }); 
+    
 
-    });
+    }
 
+console.log("Hello");
+$.ajax({
+     url: "/api/updateQuestionVisit",
+     type: "PUT",
+    data: {
+        uuid: uuid,
+        questionVisit: true 
+        }
+    }).then(function(result){
+        console.log(result);
+               // if result is you got it right
+               //display to user correct! --}}
+        }); 
+    
 
+    
+    
+});
 </script>
 
 </body>

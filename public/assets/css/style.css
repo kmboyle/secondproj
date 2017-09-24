@@ -1,15 +1,61 @@
 body {
-    background: url("../images/1.jpg") no-repeat center center fixed;
+    background: url("../images/city.jpg") no-repeat center center fixed;
     background-size: cover;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    margin: 15px;
+    margin: auto;
     color: #666;
+}
+
+.panel {
+    background-color: rgba(201, 172, 150, 1);
+    border: 5px solid #262626;
+}
+
+.container {
+    padding-top: 15px;
 }
 
 .displayResult {
     display: none;
+}
+
+.col-md-6 {
+    padding-bottom: 15px;
+}
+
+img {
+    border: 5px solid #262626;
+}
+
+.fly {
+    padding-bottom: 15px;
+}
+
+.flight {
+    -webkit-animation-name: slideRight;
+    -webkit-animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        visibility: hidden;
+        transform: translate3d(200%, -150%, 0);
+    }
+}
+
+.userGuessT:hover,
+.userGuessF:hover,
+.visited:hover,
+.mightVisit:hover {
+    cursor: pointer;
+    background-color: #010101;
+    color: #e7ccb3;
 }
 
 

@@ -23,7 +23,8 @@ module.exports = function(app) {
             res.json(dbQuestion);
         });
     });
-
+    //still need to build out functionality to keep a users score
+    //and also to track if they have visited all their questions 
     app.get("/api/checkAnswer", function(req, res) {
         console.log(req.body);
         var query = req.body.questionId;
@@ -53,7 +54,7 @@ module.exports = function(app) {
     // });
 
 
-
+    //question generator post
     app.post("/api/questions", function(req, res) {
         var uuid;
         var city = ["London", "Berlin", "Moscow", "Prague", "Moscow", "Rome", "Istanbul", "Warsaw"];
@@ -87,15 +88,37 @@ module.exports = function(app) {
         });
     });
 
-    // PUT route for updating Question
-    app.put("/api/questions", function(req, res) {
-        db.Question.update(
-            req.body, {
-                where: {
-                    id: req.body.id
-                }
-            }).then(function(dbQuestion) {
+    // PUT route for updating Question on who has visited this city
+    app.put("/api/updateVisit", function(req, res) {
+        console.log(req.body);
+        db.Question.update({
+            visited: req.body.visit
+        }, {
+            where: {
+                cityName: req.body.cityName
+            }
+        }).then(function(dbQuestion) {
             res.json(dbQuestion);
         });
     });
+
+    // PUT route for updating the visit of this specific uuid/question
+    app.put("/api/updateQuestionVisit", function(req, res) {
+        console.log(req.body);
+        db.Question.update({
+            questionVisit: req.body.questionVisit
+        }, {
+            where: {
+                uuid: req.body.uuid
+            }
+        }).then(function(dbQuestion) {
+            res.json(dbQuestion);
+        });
+    });
+
+
+
+
+
+
 };

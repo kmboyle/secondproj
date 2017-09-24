@@ -14,6 +14,14 @@ module.exports = function(sequelize, DataTypes) {
         },
         correct_answer: {
             type: DataTypes.STRING
+        },
+        visited: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
+        questionVisit: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     });
 

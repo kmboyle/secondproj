@@ -30,7 +30,7 @@ module.exports = function(app) {
             },
             include: [db.Agent]
         }).then(function(dbQuestion) {
-            console.log(dbQuestion.dataValues);
+            dbQuestion.dataValues.question = dbQuestion.dataValues.question.replace(/&quot;/g, '"');
             res.render("Cities", dbQuestion.dataValues);
         });
     });
