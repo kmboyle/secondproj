@@ -5,7 +5,7 @@ module.exports = function(app) {
     app.get("/api/agent/:id", function(req, res) {
         db.Agent.findOne({
             where:{
-                username: req.body.username
+                username: req.params.username
             }
         }).then(function(dbAgent) {
             res.cookie("username" , dbAgent.username);
@@ -22,7 +22,7 @@ module.exports = function(app) {
             }
           }).then(function(dbAgent) {
             res.sendFile(path.join(__dirname, "../public/neutral.html"));  
-            res.cookie(req.body.ID , req.body.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
