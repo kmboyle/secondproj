@@ -1,16 +1,15 @@
 var db = require("../models");
+var path = require("path");
 
 module.exports = function(app) {
-    app.get("/api/agent/", function(req, res) {
+    app.get("/api/agent/:id", function(req, res) {
         db.Agent.findOne({
             where:{
-                username: req.username,
-                password: req.password
+                username: req.body.username
             }
         }).then(function(dbAgent) {
-            res.cookie(req.username, 'cookie_value');
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
-            res.sendFile(path.join(__dirname, "../public/neutral.html"));
         });
     });
 
@@ -22,14 +21,15 @@ module.exports = function(app) {
               username: req.body.username
             }
           }).then(function(dbAgent) {
-            res.cookie(req.username , 'cookie_value');
+            res.sendFile(path.join(__dirname, "../public/neutral.html"));  
+            res.cookie(req.body.ID , req.body.username);
             res.json(dbAgent);
           });
       });
 
     app.post("/api/agent", function(req, res) {
         db.Agent.create(req.body).then(function(dbAgent) {
-            res.cookie(req.body.username , 'cookie_value');
+            res.cookie("username", dbAgent.username);
             res.json(dbAgent);
         });
     });
