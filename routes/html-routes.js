@@ -28,7 +28,7 @@ module.exports = function(app) {
     app.get("/9a5d03d6-6e04-49df-aaa3-0d1313b13676", function(req, res) {
         //berlin
         var loc={
-            city:berlin
+            city:"berlin"
         };
         res.render("Cities",loc);
       });
@@ -37,7 +37,7 @@ module.exports = function(app) {
       app.get("/c24f71c6-90fb-4d81-b271-432cbe161b17", function(req, res) {
           //istanbul
           var loc={
-            city:istanbul
+            city:"istanbul"
         };
         res.render("Cities",loc);
       });
@@ -59,7 +59,7 @@ module.exports = function(app) {
       app.get("/2758a3a3-b741-4f7b-bc46-0b3b79d2b793", function(req, res) {
           //prague
           var loc={
-              city:prague
+              city:"prague"
           };
           res.render("Cities",loc);
       });
@@ -67,7 +67,7 @@ module.exports = function(app) {
       app.get("/1feeacc3-b0e4-40dc-ad38-908aa14e1db4", function(req, res) {
           //rome
           var loc={
-            city:rome
+            city:"rome"
         };
         res.render("Cities",loc);
       });
@@ -75,7 +75,7 @@ module.exports = function(app) {
       app.get("/163318ea-5835-46b8-8b19-7c69807b1263", function(req, res) {
           //warsaw
           var loc={
-            city:warsaw
+            city:"warsaw"
         };
         res.render("Cities",loc);
       });
