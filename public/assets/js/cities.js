@@ -16,134 +16,107 @@ $(document).ready(function() {
         console.log(citiesByName[loc]);
         city = citiesByName[loc];
 
-        switch(city) {
-            case "berlin":
-            function updatePost() {
-                $.ajax({
-                  method: "PUT",
-                  url: "/api/agent/:berlin",
-                })
-                .done(function(response) {
-                    if (response){
-                        alert("success! now keep searching");
-                    }
-                    else{
-                        alert('err');
-                    }
-                  //window.location.href = "/questions";
-                });
-              }
-            updatePost();
-                break;
-            case "istanbul":
-            function updatePost() {
-                $.ajax({
-                  method: "PUT",
-                  url: "/api/agent/:istanbul",
-                })
-                .done(function(response) {
-                    if (response){
-                        console.log(response);
-                        alert("success! now keep searching");
-                    }
-                    else{
-                        alert('err');
-                    }
-                  //window.location.href = "/questions";
-                });
-              }
-            updatePost();
-                break;
-            case "moscow":
-            function updatePost() {
-                $.ajax({
-                  method: "PUT",
-                  url: "/api/agent/:moscow",
-                })
-                .done(function(response) {
-                    if (response){
-                        alert("success! now keep searching");
-                    }
-                    else{
-                        alert('err');
-                    }
-                  //window.location.href = "/questions";
-                });
-              }
-            updatePost();
-                break;
-            case "prague":
-            function updatePost() {
-                $.ajax({
-                  method: "PUT",
-                  url: "/api/agent/:prague",
-                })
-                .done(function(response) {
-                    if (response){
-                        alert("success! now keep searching");
-                    }
-                    else{
-                        alert('err');
-                    }
-                  //window.location.href = "/questions";
-                });
-              };
-            updatePost();
-                break;
-            case "rome":
-            function updatePost() {
-                $.ajax({
-                  method: "PUT",
-                  url: "/api/agent/:rome",
-                })
-                .done(function(response) {
-                    if (response){
-                        alert("success! now keep searching");
-                    }
-                    else{
-                        alert('err');
-                    }
-                  //window.location.href = "/questions";
-                });
-              };
-            updatePost();
-                break;
-            case "warsaw":
-            function updatePost() {
-                $.ajax({
-                  method: "PUT",
-                  url: "/api/agent/:warsaw",
-                })
-                .done(function(response) {
-                    if (response){
-                        alert("success! now keep searching");
-                    }
-                    else{
-                        alert('err');
-                    }
-                  //window.location.href = "/questions";
-                });
-              };
-            updatePost();
-                break;
-            default:
-                return;
-        }
-        function updatePost() {
+        if (city==='berlin'){
             $.ajax({
-              method: "PUT",
-              url: "/api/agent/:rome",
-            })
-            .done(function(response) {
-                if (response){
-                    alert("success! now keep searching");
-                }
-                else{
-                    alert('err');
-                }
-              //window.location.href = "/questions";
-            });
-          }
+                method: "PUT",
+                url: "/api/agent/berlin",
+              })
+              .done(function(response) {
+                  if (response){
+                      console.log(response);
+                      alert("success! now keep searching");
+                  }
+                  else{
+                      alert('err');
+                  }
+                //window.location.href = "/questions";
+              });
+        }
+
+        else if (city==='istanbul'){
+            $.ajax({
+                method: "PUT",
+                url: "/api/agent/istanbul",
+              })
+              .done(function(response) {
+                  if (response){
+                      console.log(response);
+                      alert("success! now keep searching");
+                  }
+                  else{
+                      alert('err');
+                  }
+                //window.location.href = "/questions";
+              });
+        }
+        else if (city==='moscow'){
+            $.ajax({
+                method: "PUT",
+                url: "/api/agent/moscow",
+              })
+              .done(function(response) {
+                  if (response){
+                      console.log(response);
+                      alert("success! now keep searching");
+                  }
+                  else{
+                      alert('err');
+                  }
+                //window.location.href = "/questions";
+              });
+        }
+        else if (city==='prague'){
+            $.ajax({
+                method: "PUT",
+                url: "/api/agent/prague",
+              })
+              .done(function(response) {
+                  if (response){
+                      console.log(response);
+                      alert("success! now keep searching");
+                  }
+                  else{
+                      alert('err');
+                  }
+                //window.location.href = "/questions";
+              });
+        }
+        else if (city==='rome'){
+            $.ajax({
+                method: "PUT",
+                url: "/api/agent/rome",
+              })
+              .done(function(response) {
+                  if (response){
+                      console.log(response);
+                      alert("success! now keep searching");
+                  }
+                  else{
+                      alert('err');
+                  }
+                //window.location.href = "/questions";
+              });
+        }
+        else if (city==='warsaw'){
+            $.ajax({
+                method: "PUT",
+                url: "/api/agent/warsaw",
+              })
+              .done(function(response) {
+                  if (response){
+                      console.log(response);
+                      alert("success! now keep searching");
+                  }
+                  else{
+                      alert('err');
+                  }
+                //window.location.href = "/questions";
+              });
+        }
+        else{
+            console.log("p");
+        }
+        
           
         
     });    

@@ -15,7 +15,7 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/agent/:berlin", function(req, res) {
+    app.put("/api/agent/berlin", function(req, res) {
         db.Agent.update({
             berlin:true
         }
@@ -25,12 +25,12 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            //res.cookie("username" , dbAgent.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
-      });
+        });
 
-      app.put("/api/agent/:istanbul", function(req, res) {
+      app.put("/api/agent/istanbul", function(req, res) {
         db.Agent.update({
             istanbul:true
         }
@@ -40,12 +40,12 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            //res.cookie("username" , dbAgent.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
 
-      app.put("/api/agent/:moscow", function(req, res) {
+      app.put("/api/agent/moscow", function(req, res) {
         db.Agent.update({
             moscow:true
         }
@@ -55,12 +55,12 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            //res.cookie("username" , dbAgent.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
 
-      app.put("/api/agent/:prague", function(req, res) {
+      app.put("/api/agent/prague", function(req, res) {
         db.Agent.update({
             prague:true
         }
@@ -70,12 +70,12 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            //res.cookie("username" , dbAgent.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
 
-      app.put("/api/agent/:rome", function(req, res) {
+      app.put("/api/agent/rome", function(req, res) {
         db.Agent.update({
             rome:true
         }
@@ -85,12 +85,12 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            //res.cookie("username" , dbAgent.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
 
-      app.put("/api/agent/:warsaw", function(req, res) {
+      app.put("/api/agent/warsaw", function(req, res) {
         db.Agent.update({
             warsaw:true
         }
@@ -100,7 +100,7 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            //res.cookie("username" , dbAgent.username);
+            res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
