@@ -1,10 +1,6 @@
 var db = require("../models");
 var express = require('express');
 var path = require("path");
-var http = require('http');
-var https = require('https');
-var htmlparser = require('htmlparser2');
-var url = require('url');
 
 module.exports = function(app) {
 
@@ -19,15 +15,15 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/agent/:uuid", function(req, res) {
+    app.put("/api/agent/", function(req, res) {
         db.Agent.update(
-            req.body,
+            req.city.value,
           {
             where: {
-              username: req.cookies.value
+              username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            res.cookie("username" , dbAgent.username);
+            //res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
