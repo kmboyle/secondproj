@@ -4,10 +4,11 @@ var path = require("path");
 
 module.exports = function(app) {
 
-    app.get("/api/agent/:username", function(req, res) {
+    app.get("/api/agent/username", function(req, res) {
         db.Agent.findOne({
             where:{
-                username: req.params
+                username: req.username,
+                password: req.password
             }
         }).then(function(dbAgent) {
             res.cookie("username" , dbAgent.username);
@@ -33,8 +34,7 @@ module.exports = function(app) {
       app.put("/api/agent/istanbul", function(req, res) {
         db.Agent.update({
             istanbul:true
-        }
-        ,
+        },
           {
             where: {
               username: req.cookies.username

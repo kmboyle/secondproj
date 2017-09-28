@@ -1,53 +1,6 @@
 
 <body  style="color: #262626">
- <div class = "container">
-     <div class ="row">
-        <div class = "col-md-12 text-center">
-            <h1 id="location"><strong>Destination: {{city}}</strong></h1>
-        </div>
-    </div>  
-     
-    <div class ="row">
-        <div class = "col-md-6 text-center panel">
-
-            
-            <div id="question" class="city-{{city}}">
-            <h1>You have arrived in {{city}}!</h1>
-            <h3>Here is your question:</h3>
-            <hr style="background-color: #262626">
-
-            <h3>           
-                {{question}}        
-            </h3>   
-                    <div id="userAnswer">
-                        <div class = "userGuessT"><h3>True</h3></div>
-                        <div class = "userGuessF"><h3>False</h3></div>
-                    </div>
-
-                <div class = "displayResult"><h3></h3></div>
-               
-            </div>
-            <div class="fly">
-                  <h3>Take off to your next destination!</h3>
-            <img id = "plane"  src = "/assets/images/fly.jpg" style="width:328px; height: 153px" onclick="fly()"/>
-            </div>
-
-        <div><h3>Have you ever visited {{city}} before?</h3><br>
-        <div class="visited"><h3>Yes</h3></div>
-        <div class="mightVisit"><h3>No</h3></div>
-        </div>
-        <div class = "advice"><h3></h3></div>          
-        </div>
-        <div class = "col-md-6">
-            <div class = "img img-responsive center-block">
-            <a href="http://www.wikipedia.com/wiki/{{city}}" target="_blank">
-            <img src = "/assets/images/{{city}}.jpg" style="width: 650px; height: 600px"/>
-            </a>
-            </div>  
-        </div>
- </div>
 <script>
-
     //script to trigger flight animation
     function fly(){
     document.getElementById('plane').className ='flight';
@@ -60,7 +13,7 @@
     var uuid = "{{uuid}}";
     var userScore;
     var userGuess;
-    var totalVisit = {{visited}};
+    //var totalVisit = {{visited}};
 
     $(document).ready(function(){
     //attempt to close user session      
@@ -133,7 +86,7 @@ $(".mightVisit").on("click", function(event){
             $(".advice h3").html("Consider making this your next destination!");
             updateVisit();
 });
-
+/*
 //function to send count to database
 function updateVisit (){
 $.ajax({
@@ -168,10 +121,58 @@ $.ajax({
         }); 
     
 
-    
+    */
     
 });
 </script>
+
+ <div class = "container">
+     <div class ="row">
+        <div class = "col-md-12 text-center">
+            <h1 id="location"><strong>Destination: {{city}}</strong></h1>
+        </div>
+    </div>  
+     
+    <div class ="row">
+        <div class = "col-md-6 text-center panel">
+
+            
+            <div id="question" class="city-{{city}}">
+            <h1>You have arrived in {{city}}!</h1>
+            <h3>Here is your question:</h3>
+            <hr style="background-color: #262626">
+
+            <h3>           
+                {{question}}        
+            </h3>   
+                    <div id="userAnswer">
+                        <div class = "userGuessT"><h3>True</h3></div>
+                        <div class = "userGuessF"><h3>False</h3></div>
+                    </div>
+
+                <div class = "displayResult"><h3></h3></div>
+               
+            </div>
+            <div class="fly">
+                  <h3>Take off to your next destination!</h3>
+            <img id = "plane"  src = "../assets/images/fly.jpg" style="width:328px; height: 153px" onclick="fly()"/>
+            </div>
+
+        <div><h3>Have you ever visited {{city}} before?</h3><br>
+        <div class="visited"><h3>Yes</h3></div>
+        <div class="mightVisit"><h3>No</h3></div>
+        </div>
+        <div class = "advice"><h3></h3></div>          
+        </div>
+        <div class = "col-md-6">
+            <div class = "img img-responsive center-block">
+            <a href="http://www.wikipedia.com/wiki/{{city}}" target="_blank">
+            <img src = "/assets/images/{{city}}.jpg" style="width: 650px; height: 600px"/>
+            </a>
+            </div>  
+        </div>
+ </div>
+
 
 </body>
  
