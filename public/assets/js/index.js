@@ -2,7 +2,7 @@ $(document).ready(function() {
     
     var nameInput = $("#username");
     var passInput = $("#password");
-    
+
     $(document).on("click", "#sign-up", handleAgentSignUp);
     $(document).on("click", "#sign-in", handleAgentSignIn);
   
@@ -12,9 +12,10 @@ $(document).ready(function() {
     function handleAgentSignUp(event) {
       event.preventDefault();
       // Don't do anything if the name fields hasn't been filled out
-      if (!nameInput.val().trim().trim()) {
+      if (!nameInput){//.val().trim().trim()) {
         return;
       }
+      console.log(nameInput.val().trim());
       // Calling the uploadAgent function and passing in the value of the name input
       uploadAgent({
         username: nameInput
@@ -29,14 +30,14 @@ $(document).ready(function() {
     function handleAgentSignIn(event) {
         event.preventDefault();
         // Don't do anything if the name fields hasn't been filled out
-        if (!nameInput.val().trim().trim()) {
+        if (!nameInput){//.val().trim().trim()) {
           return;
         }
         // Calling the checkAgent function
+        console.log(nameInput.val().trim().toString());
         checkAgent({
-          username: nameInput
-            .val()
-            .trim()//,
+          username: nameInput.val().trim()
+          //,
           //password: passInput
            // .val()
            // .trim()
@@ -45,7 +46,7 @@ $(document).ready(function() {
 
     // A function for creating an agent.
     function uploadAgent(agentData) {
-      $.post("/api/agent", agentData)
+      $.post("/api/agent/", agentData)
         .then(function(response){
             if (response){
                 window.location.href="/questions/"
@@ -57,7 +58,7 @@ $(document).ready(function() {
     }
     
     function checkAgent(agentData){
-      $.get("/api/agent/:id", agentData)
+      $.get("/api/agent/:username", agentData)
         .then(function(response){
             if (response){
                 window.location.href="/questions/"

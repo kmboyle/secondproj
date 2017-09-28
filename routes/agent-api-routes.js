@@ -2,10 +2,10 @@ var db = require("../models");
 var path = require("path");
 
 module.exports = function(app) {
-    app.get("/api/agent/:id", function(req, res) {
+    app.get("/api/agent/:username", function(req, res) {
         db.Agent.findOne({
             where:{
-                username: req.params.username
+                username: req.params
             }
         }).then(function(dbAgent) {
             res.cookie("username" , dbAgent.username);
@@ -13,7 +13,7 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/agent", function(req, res) {
+    app.put("/api/agent/", function(req, res) {
         db.Agent.update(
           req.body,
           {
@@ -21,13 +21,12 @@ module.exports = function(app) {
               username: req.body.username
             }
           }).then(function(dbAgent) {
-            res.sendFile(path.join(__dirname, "../public/neutral.html"));  
             res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
 
-    app.post("/api/agent", function(req, res) {
+    app.post("/api/agent/", function(req, res) {
         db.Agent.create(req.body).then(function(dbAgent) {
             res.cookie("username", dbAgent.username);
             res.json(dbAgent);
