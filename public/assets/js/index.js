@@ -2,6 +2,7 @@ $(document).ready(function() {
     
     var nameInput = $("#username");
     var passInput = $("#password");
+    var nameInput2 = $("#username").val().trim();
 
     $(document).on("click", "#sign-up", handleAgentSignUp);
     $(document).on("click", "#sign-in", handleAgentSignIn);
@@ -29,14 +30,13 @@ $(document).ready(function() {
   
     function handleAgentSignIn(event) {
         event.preventDefault();
-        // Don't do anything if the name fields hasn't been filled out
         if (!nameInput){//.val().trim().trim()) {
           return;
         }
         // Calling the checkAgent function
-        console.log(nameInput.val().trim().toString());
+       console.log(nameInput2);
         checkAgent({
-          username: nameInput.val().trim()
+          username: nameInput2
           //,
           //password: passInput
            // .val()

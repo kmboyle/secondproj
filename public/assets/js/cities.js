@@ -6,7 +6,11 @@ $(document).ready(function() {
     $(document).on("click", "#sign-up", handleAgentSignUp);
     $(document).on("click", "#sign-in", handleAgentSignIn);
   
-    
+    $( window ).on( "load", function() {
+
+        
+        console.log( "window loaded" );
+    });    
   
     // A function to handle what happens when the form is submitted to create a new Author
     function handleAgentSignUp(event) {
