@@ -1,7 +1,13 @@
 var db = require("../models");
+var express = require('express');
 var path = require("path");
+var http = require('http');
+var https = require('https');
+var htmlparser = require('htmlparser2');
+var url = require('url');
 
 module.exports = function(app) {
+
     app.get("/api/agent/:username", function(req, res) {
         db.Agent.findOne({
             where:{
@@ -13,12 +19,12 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/agent/", function(req, res) {
+    app.put("/api/agent/:uuid", function(req, res) {
         db.Agent.update(
-          req.body,
+            req.body,
           {
             where: {
-              username: req.body.username
+              username: req.cookies.value
             }
           }).then(function(dbAgent) {
             res.cookie("username" , dbAgent.username);
