@@ -15,9 +15,86 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/agent/", function(req, res) {
-        db.Agent.update(
-            req.city.value,
+    app.put("/api/agent/:berlin", function(req, res) {
+        db.Agent.update({
+            berlin:true
+        }
+        ,
+          {
+            where: {
+              username: req.cookies.username
+            }
+          }).then(function(dbAgent) {
+            //res.cookie("username" , dbAgent.username);
+            res.json(dbAgent);
+          });
+      });
+
+      app.put("/api/agent/:istanbul", function(req, res) {
+        db.Agent.update({
+            istanbul:true
+        }
+        ,
+          {
+            where: {
+              username: req.cookies.username
+            }
+          }).then(function(dbAgent) {
+            //res.cookie("username" , dbAgent.username);
+            res.json(dbAgent);
+          });
+      });
+
+      app.put("/api/agent/:moscow", function(req, res) {
+        db.Agent.update({
+            moscow:true
+        }
+        ,
+          {
+            where: {
+              username: req.cookies.username
+            }
+          }).then(function(dbAgent) {
+            //res.cookie("username" , dbAgent.username);
+            res.json(dbAgent);
+          });
+      });
+
+      app.put("/api/agent/:prague", function(req, res) {
+        db.Agent.update({
+            prague:true
+        }
+        ,
+          {
+            where: {
+              username: req.cookies.username
+            }
+          }).then(function(dbAgent) {
+            //res.cookie("username" , dbAgent.username);
+            res.json(dbAgent);
+          });
+      });
+
+      app.put("/api/agent/:rome", function(req, res) {
+        db.Agent.update({
+            rome:true
+        }
+        ,
+          {
+            where: {
+              username: req.cookies.username
+            }
+          }).then(function(dbAgent) {
+            //res.cookie("username" , dbAgent.username);
+            res.json(dbAgent);
+          });
+      });
+
+      app.put("/api/agent/:warsaw", function(req, res) {
+        db.Agent.update({
+            warsaw:true
+        }
+        ,
           {
             where: {
               username: req.cookies.username

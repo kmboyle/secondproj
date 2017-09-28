@@ -16,13 +16,123 @@ $(document).ready(function() {
         console.log(citiesByName[loc]);
         city = citiesByName[loc];
 
-        function updatePost(neep) {
+        switch(city) {
+            case "berlin":
+            function updatePost() {
+                $.ajax({
+                  method: "PUT",
+                  url: "/api/agent/:berlin",
+                })
+                .done(function(response) {
+                    if (response){
+                        alert("success! now keep searching");
+                    }
+                    else{
+                        alert('err');
+                    }
+                  //window.location.href = "/questions";
+                });
+              }
+            updatePost();
+                break;
+            case "istanbul":
+            function updatePost() {
+                $.ajax({
+                  method: "PUT",
+                  url: "/api/agent/:istanbul",
+                })
+                .done(function(response) {
+                    if (response){
+                        console.log(response);
+                        alert("success! now keep searching");
+                    }
+                    else{
+                        alert('err');
+                    }
+                  //window.location.href = "/questions";
+                });
+              }
+            updatePost();
+                break;
+            case "moscow":
+            function updatePost() {
+                $.ajax({
+                  method: "PUT",
+                  url: "/api/agent/:moscow",
+                })
+                .done(function(response) {
+                    if (response){
+                        alert("success! now keep searching");
+                    }
+                    else{
+                        alert('err');
+                    }
+                  //window.location.href = "/questions";
+                });
+              }
+            updatePost();
+                break;
+            case "prague":
+            function updatePost() {
+                $.ajax({
+                  method: "PUT",
+                  url: "/api/agent/:prague",
+                })
+                .done(function(response) {
+                    if (response){
+                        alert("success! now keep searching");
+                    }
+                    else{
+                        alert('err');
+                    }
+                  //window.location.href = "/questions";
+                });
+              };
+            updatePost();
+                break;
+            case "rome":
+            function updatePost() {
+                $.ajax({
+                  method: "PUT",
+                  url: "/api/agent/:rome",
+                })
+                .done(function(response) {
+                    if (response){
+                        alert("success! now keep searching");
+                    }
+                    else{
+                        alert('err');
+                    }
+                  //window.location.href = "/questions";
+                });
+              };
+            updatePost();
+                break;
+            case "warsaw":
+            function updatePost() {
+                $.ajax({
+                  method: "PUT",
+                  url: "/api/agent/:warsaw",
+                })
+                .done(function(response) {
+                    if (response){
+                        alert("success! now keep searching");
+                    }
+                    else{
+                        alert('err');
+                    }
+                  //window.location.href = "/questions";
+                });
+              };
+            updatePost();
+                break;
+            default:
+                return;
+        }
+        function updatePost() {
             $.ajax({
               method: "PUT",
-              url: "/api/agent/",
-              neep:{
-                  value: true
-              }
+              url: "/api/agent/:rome",
             })
             .done(function(response) {
                 if (response){
@@ -34,7 +144,8 @@ $(document).ready(function() {
               //window.location.href = "/questions";
             });
           }
-        updatePost(city);
+          
+        
     });    
   
     // A function to handle what happens when the form is submitted to create a new Author
