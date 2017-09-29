@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  
+$(document).ready(function() {    
+
     $( window ).on( "load", function() {
         var uuid=window.location.pathname;
         var uuid= uuid.toString();
@@ -116,9 +116,48 @@ $(document).ready(function() {
         else{
             console.log("p");
         }
-        
-          
-        
-    });
-
+            //in user session, load a new window when they scan a qr code
+            function createQuestion() {
+    
+                var questionArray = {
+                    username: "",
+                    question: [],
+                    correct_answer: []
+                }
+                var trivia = "https://opentdb.com/api.php?amount=10&category=22&difficulty=medium&type=boolean";
+                $.get(trivia, function(data) {
+                    console.log(data.results);
+                    data.results.forEach(function(element) {
+                        questionArray.question.push(element.question);
+                        questionArray.correct_answer.push(element.correct_answer);
+                    });
+                    console.log(questionArray);
+                    $.post("/api/questions", questionArray);
+                });
+            }
+            createQuestion()
+                // function getURL(){
+                //     $.get("/api/questions/3965ff7a-ae3b-4576-815c-07a1600baad3")
+                // }
+                // qrURL as a parameter?
+                //this function is called on london.html page load and this function
+                //calls the api to get the question Object and display question in html
+    
+            $('#logo').addClass('animated fadeIn');
+            $("input:text:visible:first").focus();
+    
+            $('#username').focus(function() {
+                $('label[for="username"]').addClass('selected');
+            });
+            $('#username').blur(function() {
+                $('label[for="username"]').removeClass('selected');
+            });
+            $('#password').focus(function() {
+                $('label[for="password"]').addClass('selected');
+            });
+            $('#password').blur(function() {
+                $('label[for="password"]').removeClass('selected');
+            });
+    
 })
+});

@@ -60,6 +60,7 @@ module.exports = function(app) {
         var city = ["London", "Berlin", "Moscow", "Prague", "Moscow", "Rome", "Istanbul", "Warsaw"];
         var rand;
         var qrURL;
+        var id = req.cookies.AgentId;
         for (var i = 0; i < req.body.question.length; i++) {
             rand = Math.floor((Math.random() * 8));
             uuid = uuidv4();
@@ -67,6 +68,7 @@ module.exports = function(app) {
             //data=https://cryptic-ridge-88864.herokuapp.com/api/questions/"
 
             db.Question.create({
+                AgentId: id,
                 uuid: uuid,
                 city: city[rand],
                 question: req.body.question[i],

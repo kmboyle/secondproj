@@ -11,6 +11,7 @@ module.exports = function(app) {
                 password: req.password
             }
         }).then(function(dbAgent) {
+            res.cookie('AgentId',dbAgent.id);
             res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
         });
@@ -100,7 +101,7 @@ module.exports = function(app) {
               username: req.cookies.username
             }
           }).then(function(dbAgent) {
-            res.cookie("username" , dbAgent.username);
+            //res.cookie("username" , dbAgent.username);
             res.json(dbAgent);
           });
       });
@@ -108,6 +109,7 @@ module.exports = function(app) {
     app.post("/api/agent/", function(req, res) {
         db.Agent.create(req.body).then(function(dbAgent) {
             res.cookie("username", dbAgent.username);
+            res.cookie('AgentId',dbAgent.id);
             res.json(dbAgent);
         });
     });
