@@ -33,9 +33,15 @@
 
 <script>
     $(document).ready(function() {
-        //in user session, load a new window when they scan a qr code
-        function createQuestion() {
+        //in user session, load a new window when they scan a qr c
+        // function getURL(){
+        //     $.get("/api/questions/3965ff7a-ae3b-4576-815c-07a1600baad3")
+        // }
+        // qrURL as a parameter?
+        //this function is called on london.html page load and this function
+        //calls the api to get the question Object and display question in html
 
+        function createQuestion() {
             var questionArray = {
                 question: [],
                 correct_answer: []
@@ -51,13 +57,9 @@
                 $.post("/api/questions", questionArray);
             });
         }
-        createQuestion()
-            // function getURL(){
-            //     $.get("/api/questions/3965ff7a-ae3b-4576-815c-07a1600baad3")
-            // }
-            // qrURL as a parameter?
-            //this function is called on london.html page load and this function
-            //calls the api to get the question Object and display question in html
+        createQuestion();
+
+
 
         $('#logo').addClass('animated fadeIn');
         $("input:text:visible:first").focus();

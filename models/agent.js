@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var Agent = sequelize.define("Agent", {
-        username: DataTypes.STRING,
-        userScore: DataTypes.INTEGER
+        userName: DataTypes.STRING,
+        userVisits: DataTypes.INTEGER
     });
 
     Agent.associate = function(models) {
 
-        Agent.hasMany(models.Question, {
+        Agent.hasMany(models.userQuestion, {
             onDelete: "cascade"
         });
     };

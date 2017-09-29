@@ -137,7 +137,7 @@ $(".mightVisit").on("click", function(event){
 //function to send count to database
 function updateVisit (){
 $.ajax({
-     url: "/api/updateVisit",
+     url: "/api/urlVisit",
      type: "PUT",
     data: {
         uuid: uuid,
@@ -145,7 +145,9 @@ $.ajax({
         visit:  totalVisit
         }
     }).then(function(result){
-        console.log(result);
+
+        console.log("if you visited, this will be a 1: ");
+        console.log(result[0]);
                // if result is you got it right
                //display to user correct! --}}
         }); 
@@ -153,7 +155,7 @@ $.ajax({
 
     }
 
-console.log("Hello");
+
 $.ajax({
      url: "/api/updateQuestionVisit",
      type: "PUT",

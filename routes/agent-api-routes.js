@@ -10,7 +10,10 @@ module.exports = function(app) {
     });
 
     app.post("/api/agent", function(req, res) {
-        db.Agent.create(req.body).then(function(dbAgent) {
+        db.Agent.create({
+            userName: "Moona",
+            userVisits: 3
+        }).then(function(dbAgent) {
             res.json(dbAgent);
         });
     });

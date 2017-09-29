@@ -1,13 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     var Question = sequelize.define("Question", {
-        uuid: {
-            type: DataTypes.STRING
-
-        },
-        city: {
-            type: DataTypes.STRING,
-
-        },
         question: {
             type: DataTypes.STRING,
 
@@ -15,23 +7,16 @@ module.exports = function(sequelize, DataTypes) {
         correct_answer: {
             type: DataTypes.STRING
         },
-        visited: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        questionVisit: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        }
+        questionId: DataTypes.INTEGER
     });
 
-    Question.associate = function(models) {
-        Question.belongsTo(models.Agent, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Question.associate = function(models) {
+    //     Question.belongsTo(models.userQuestion, {
+    //         // foreignKey: {
+    //         //     allowNull: false
+    //         // }
+    //     });
+    // };
 
     return Question;
 };

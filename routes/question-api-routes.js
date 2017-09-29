@@ -13,15 +13,54 @@ const uuidv4 = require("uuid/v4");
 // =============================================================
 module.exports = function(app) {
 
-    // GET route for getting all of the questions
-    app.get("/api/questions", function(req, res) {
-        var query = {};
-        db.Question.findAll({
-            where: query,
-            include: [db.Agent]
-        }).then(function(dbQuestion) {
-            res.json(dbQuestion);
-        });
+    var Client = require('node-rest-client').Client;
+
+    var client = new Client();
+
+    var questionArray = {
+        question: [],
+        correct_answer: []
+    }
+
+    // function questionBuilder() {
+    //     // direct way 
+    //     client.get("https://opentdb.com/api.php?amount=10&category=22&difficulty=medium&type=boolean", function(data, response) {
+    //         // parsed response body as js object 
+    //         // raw response 
+    //         data.results.forEach(function(element) {
+
+    //             db.Question.create({
+    //                 question: element.question,
+    //                 correct_answer: element.correct_answer
+    //             });
+    //         });
+    //     });
+    // }
+    app.route("/api/questions").post(function(req, res) {
+        for (var i = 0; i < req.body.question.length; i++) {
+            db.Question.create({
+                question: req.body.question[i],
+                correct_answer: req.body.correct_answer[i]
+
+            });
+        }
+    }).post(function(req, res) {
+        var uuid;
+        var city = ["London", "Berlin", "Moscow", "Prague", "Moscow", "Rome", "Istanbul", "Warsaw"];
+        var rand;
+        var qrURL;
+        for (var i = 0; i < req.body.question.length; i++) {
+            rand = Math.floor((Math.random() * 8));
+            uuid = uuidv4();
+            //url for deployed app testing
+            //data=https://cryptic-ridge-88864.herokuapp.com/api/questions/"
+
+            db.city.create({
+                uuid: uuid,
+                name: city[rand],
+
+            });
+        }
     });
     //still need to build out functionality to keep a users score
     //and also to track if they have visited all their questions 
@@ -55,25 +94,24 @@ module.exports = function(app) {
 
 
     //question generator post
-    app.post("/api/questions", function(req, res) {
-        var uuid;
-        var city = ["London", "Berlin", "Moscow", "Prague", "Moscow", "Rome", "Istanbul", "Warsaw"];
-        var rand;
-        var qrURL;
-        for (var i = 0; i < req.body.question.length; i++) {
-            rand = Math.floor((Math.random() * 8));
-            uuid = uuidv4();
-            //url for deployed app testing
-            //data=https://cryptic-ridge-88864.herokuapp.com/api/questions/"
+    // app.post("/api/city", function(req, res) {
+    //     var uuid;
+    //     var city = ["London", "Berlin", "Moscow", "Prague", "Moscow", "Rome", "Istanbul", "Warsaw"];
+    //     var rand;
+    //     var qrURL;
+    //     for (var i = 0; i < req.body.question.length; i++) {
+    //         rand = Math.floor((Math.random() * 8));
+    //         uuid = uuidv4();
+    //         //url for deployed app testing
+    //         //data=https://cryptic-ridge-88864.herokuapp.com/api/questions/"
 
-            db.Question.create({
-                uuid: uuid,
-                city: city[rand],
-                question: req.body.question[i],
-                correct_answer: req.body.correct_answer[i]
-            })
-        }
-    });
+    //         db.city.create({
+    //             uuid: uuid,
+    //             name: city[rand],
+
+    //         })
+    //     }
+    // });
 
 
 
@@ -89,13 +127,13 @@ module.exports = function(app) {
     });
 
     // PUT route for updating Question on who has visited this city
-    app.put("/api/updateVisit", function(req, res) {
+    app.put("/api/urlVisit", function(req, res) {
         console.log(req.body);
         db.Question.update({
             visited: req.body.visit
         }, {
             where: {
-                cityName: req.body.cityName
+                city: req.body.cityName
             }
         }).then(function(dbQuestion) {
             res.json(dbQuestion);
@@ -115,10 +153,4 @@ module.exports = function(app) {
             res.json(dbQuestion);
         });
     });
-
-
-
-
-
-
 };
