@@ -123,6 +123,7 @@ $(document).ready(function(){
             function createQuestion() {
     
                 var questionArray = {
+                    username: "",
                     question: [],
                     correct_answer: []
                 }
@@ -133,7 +134,10 @@ $(document).ready(function(){
                         questionArray.question.push(element.question);
                         questionArray.correct_answer.push(element.correct_answer);
                     });
+                    var rand = Math.floor((Math.random() * 10));
+                    $(".question").html(questionArray.question[rand]);
                     console.log(questionArray);
+
                     $.post("/api/questions", questionArray);
                 });
             }
@@ -268,7 +272,7 @@ $(".mightVisit").on("click", function(event){
             <h3>Here is your question:</h3>
             <hr style="background-color: #262626">
 
-            <h3>           
+            <h3 id="q-select" class="question">           
                 {{question}}        
             </h3>   
                     <div id="userAnswer">
