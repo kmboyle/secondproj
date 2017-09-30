@@ -41,6 +41,9 @@
         //this function is called on london.html page load and this function
         //calls the api to get the question Object and display question in html
 
+        var pathArray = window.location.href.split("l=");
+        console.log(pathArray);
+
         function createQuestion() {
             var questionArray = {
                 question: [],

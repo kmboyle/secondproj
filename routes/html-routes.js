@@ -20,6 +20,10 @@ module.exports = function(app) {
 
         res.sendFile(path.join(__dirname, "../public/neutral.html"));
     });
+    app.get("/signup/", function(req, res) {
+
+        res.sendFile(path.join(__dirname, "../public/signup.html"));
+    });
 
     app.get("/questions/:uuid", function(req, res) {
         console.log(req.params.uuid);

@@ -36,15 +36,7 @@ module.exports = function(app) {
     //         });
     //     });
     // }
-    app.route("/api/questions").post(function(req, res) {
-        for (var i = 0; i < req.body.question.length; i++) {
-            db.Question.create({
-                question: req.body.question[i],
-                correct_answer: req.body.correct_answer[i]
-
-            });
-        }
-    }).post(function(req, res) {
+    app.route("/api/questions/").post(function(req, res) {
         var uuid;
         var city = ["London", "Berlin", "Moscow", "Prague", "Moscow", "Rome", "Istanbul", "Warsaw"];
         var rand;
@@ -52,16 +44,28 @@ module.exports = function(app) {
         for (var i = 0; i < req.body.question.length; i++) {
             rand = Math.floor((Math.random() * 8));
             uuid = uuidv4();
-            //url for deployed app testing
-            //data=https://cryptic-ridge-88864.herokuapp.com/api/questions/"
 
+            db.Question.create({
+                question: req.body.question[i],
+                correct_answer: req.body.correct_answer[i]
+
+            });
             db.city.create({
                 uuid: uuid,
                 name: city[rand],
 
             });
+
         }
-    });
+        console.log(req.body);
+        db.agent.create({
+            username: req.params.email
+        })
+    })
+
+    //         //url for deployed app testing
+    //         //data=https://cryptic-ridge-88864.herokuapp.com/api/questions/"
+
     //still need to build out functionality to keep a users score
     //and also to track if they have visited all their questions 
     app.get("/api/checkAnswer", function(req, res) {
