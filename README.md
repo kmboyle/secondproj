@@ -1,4 +1,4 @@
-# secondproj
+# Explore More
 
 Main Purposes:
 
