@@ -36,7 +36,7 @@ QR CODES TO SCAN:
 
 ![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_prague.png)
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_romepng)
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_rome.png)
 
 ![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_warsaw.png)
 
