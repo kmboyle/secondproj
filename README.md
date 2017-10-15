@@ -5,6 +5,7 @@ https://pacific-fortress-90966.herokuapp.com/
 
 QR CODES TO SCAN:
 
+![alt text](secondproj/public/assets/images/codes/QR_Code_berlin.png)
 
 Main Purposes:
 
