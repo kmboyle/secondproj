@@ -32,17 +32,17 @@ QR CODES TO SCAN:
 
 <img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_berlin.png" alt="alt text" width="250" height="250">
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_berlin.png = 250x250)
+<img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_istanbul.png" alt="alt text" width="250" height="250">
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_istanbul.png)
+<img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_moscow.png" alt="alt text" width="250" height="250">
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_moscow.png)
+<img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_prague.png" alt="alt text" width="250" height="250">
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_prague.png)
+<img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_rome.png" alt="alt text" width="250" height="250">
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_rome.png)
+<img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_warsaw.png" alt="alt text" width="250" height="250">
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_warsaw.png)
+
 
 
 
