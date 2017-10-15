@@ -3,9 +3,7 @@
 Checkout the game here: 
 https://pacific-fortress-90966.herokuapp.com/
 
-QR CODES TO SCAN:
 
-![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_berlin.png)
 
 Main Purposes:
 
@@ -26,3 +24,28 @@ Deployment with Heroku
 New Technology: QR Codes, UUIDs, and Data Validation
 Authentication of User Cookies
 Password Encryption 
+
+
+QR CODES TO SCAN:
+
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_berlin.png)
+
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_istanbul.png)
+
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_moscow.png)
+
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_prague.png)
+
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_romepng)
+
+![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_warsaw.png)
+
+
+
+
+
+
+
+
+
+
