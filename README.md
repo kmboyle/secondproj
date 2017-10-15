@@ -1,5 +1,7 @@
 # Explore More
 
+I recommend to open the game up in a mobile device so you can scan the qr codes below.
+
 Checkout the game here: 
 https://pacific-fortress-90966.herokuapp.com/
 
