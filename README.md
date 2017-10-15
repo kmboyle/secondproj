@@ -30,6 +30,8 @@ Password Encryption
 
 QR CODES TO SCAN:
 
+<img src="https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_berlin.png" alt="alt text" width="250" height="250">
+
 ![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_berlin.png = 250x250)
 
 ![alt text](https://github.com/kmboyle/secondproj/blob/kevin/public/assets/images/codes/QR_Code_istanbul.png)
