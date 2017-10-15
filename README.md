@@ -1,5 +1,11 @@
 # Explore More
 
+Checkout the game here: 
+https://pacific-fortress-90966.herokuapp.com/
+
+QR CODES TO SCAN:
+
+
 Main Purposes:
 
 Hunt for QR Codes that each connect you to a fun new city. You have six to collect.
